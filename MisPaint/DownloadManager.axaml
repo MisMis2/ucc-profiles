@@ -1,0 +1,15 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MisPaint.DownloadManager"
+        Title="Загрузка"
+        Width="400" Height="150"
+        Background="#2D2D30"
+        CanResize="False"
+        WindowStartupLocation="CenterOwner">
+    <StackPanel Margin="20" Spacing="10">
+        <TextBlock Name="StatusText" Foreground="#CCCCCC" FontSize="12"/>
+        <ProgressBar Name="Progress" Height="20" Minimum="0" Maximum="100"/>
+        <TextBlock Name="SpeedText" Foreground="#AAAAAA" FontSize="10"/>
+        <Button Name="CancelBtn" Content="Отмена" Width="100" Height="28" Background="#3E3E42" Foreground="White" HorizontalAlignment="Center"/>
+    </StackPanel>
+</Window>

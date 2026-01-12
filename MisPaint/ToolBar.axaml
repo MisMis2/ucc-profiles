@@ -1,0 +1,51 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:ic="using:FluentIcons.Avalonia.Fluent"
+             x:Class="MisPaint.ToolBar">
+    <UserControl.Styles>
+        <Style Selector="Button.tool">
+            <Setter Property="Width" Value="48"/>
+            <Setter Property="Height" Value="48"/>
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="BorderThickness" Value="1"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="CornerRadius" Value="4"/>
+            <Setter Property="Cursor" Value="Hand"/>
+        </Style>
+        <Style Selector="Button.tool:pointerover">
+            <Setter Property="Background" Value="#3E3E42"/>
+            <Setter Property="BorderBrush" Value="#3F3F46"/>
+        </Style>
+        <Style Selector="Button.tool.active">
+            <Setter Property="Background" Value="#094771"/>
+            <Setter Property="BorderBrush" Value="#0078D4"/>
+        </Style>
+        <Style Selector="ic|SymbolIcon">
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Border Background="#2D2D30" BorderBrush="#3F3F46" BorderThickness="0,0,1,0" Width="60">
+        <StackPanel Margin="6">
+            <Button Classes="tool" x:Name="BrushButton" ToolTip.Tip="Кисть (B)" Click="OnBrushClick" PointerPressed="OnToolRightClick">
+                <ic:SymbolIcon Symbol="PaintBrush" FontSize="24"/>
+            </Button>
+            <Button Classes="tool" x:Name="EraserButton" ToolTip.Tip="Ластик (E)" Click="OnEraserClick" PointerPressed="OnToolRightClick">
+                <ic:SymbolIcon Symbol="Eraser" FontSize="24"/>
+            </Button>
+            <Button Classes="tool" ToolTip.Tip="Заливка (G)" Click="OnFillClick" PointerPressed="OnToolRightClick">
+                <ic:SymbolIcon Symbol="PaintBucket" FontSize="24"/>
+            </Button>
+            <Button Classes="tool" ToolTip.Tip="Пипетка (I)" Click="OnPickerClick">
+                <ic:SymbolIcon Symbol="Eyedropper" FontSize="24"/>
+            </Button>
+            <Separator Margin="0,8"/>
+            <Button Classes="tool" ToolTip.Tip="Отменить (Ctrl+Z)" Click="OnUndoClick">
+                <ic:SymbolIcon Symbol="ArrowUndo" FontSize="24"/>
+            </Button>
+            <Button Classes="tool" ToolTip.Tip="Повторить (Ctrl+Y)" Click="OnRedoClick">
+                <ic:SymbolIcon Symbol="ArrowRedo" FontSize="24"/>
+            </Button>
+        </StackPanel>
+    </Border>
+</UserControl>

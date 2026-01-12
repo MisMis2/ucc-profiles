@@ -1,0 +1,74 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="using:MisPaint"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        x:Class="MisPaint.MainWindow"
+        Title="MisPaint">
+    <Window.Styles>
+        <Style Selector="Window">
+            <Setter Property="Background" Value="#1E1E1E"/>
+        </Style>
+        <Style Selector="Menu">
+            <Setter Property="Background" Value="#2D2D30"/>
+        </Style>
+        <Style Selector="MenuItem">
+            <Setter Property="Foreground" Value="#CCCCCC"/>
+        </Style>
+        <Style Selector="MenuItem /template/ Border#PART_LayoutRoot">
+            <Setter Property="CornerRadius" Value="0"/>
+            <Setter Property="Background" Value="Transparent"/>
+        </Style>
+        <Style Selector="MenuItem:pointerover /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="#3E3E42"/>
+        </Style>
+        <Style Selector="MenuItem:selected /template/ Border#PART_LayoutRoot">
+            <Setter Property="Background" Value="#3E3E42"/>
+        </Style>
+        <Style Selector="MenuItem /template/ Popup > Border">
+            <Setter Property="CornerRadius" Value="0,0,4,4"/>
+            <Setter Property="Background" Value="#2D2D30"/>
+            <Setter Property="BorderBrush" Value="#3F3F46"/>
+        </Style>
+    </Window.Styles>
+    
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Создать" Click="OnNew"/>
+                <MenuItem Header="Открыть..." Click="OnOpen"/>
+                <MenuItem Header="Сохранить" Click="OnSave"/>
+                <MenuItem Header="Сохранить как..." Click="OnSaveAs"/>
+                <Separator/>
+                <MenuItem Header="Выход" Click="OnExit"/>
+            </MenuItem>
+            <MenuItem Header="Правка">
+                <MenuItem Header="Отменить" InputGesture="Ctrl+Z" Click="OnUndo"/>
+                <MenuItem Header="Повторить" InputGesture="Ctrl+Y" Click="OnRedo"/>
+                <Separator/>
+                <MenuItem Header="Вырезать" InputGesture="Ctrl+X"/>
+                <MenuItem Header="Копировать" InputGesture="Ctrl+C"/>
+                <MenuItem Header="Вставить" InputGesture="Ctrl+V"/>
+            </MenuItem>
+            <MenuItem Header="Вид">
+                <MenuItem Header="Увеличить" InputGesture="Ctrl+OemPlus"/>
+                <MenuItem Header="Уменьшить" InputGesture="Ctrl+OemMinus"/>
+                <MenuItem Header="100%" InputGesture="Ctrl+D0"/>
+            </MenuItem>
+            <MenuItem Header="Инструменты">
+                <MenuItem Header="Кисть" InputGesture="B"/>
+                <MenuItem Header="Ластик" InputGesture="E"/>
+                <MenuItem Header="Заливка" InputGesture="G"/>
+                <MenuItem Header="Пипетка" InputGesture="I"/>
+            </MenuItem>
+            <MenuItem Header="Цвет">
+                <MenuItem Header="Магазин ICC профилей" Click="OnColorSpaceStore"/>
+            </MenuItem>
+        </Menu>
+        <local:ToolBar DockPanel.Dock="Left" x:Name="ToolBar"/>
+        <Panel Background="White">
+            <local:DrawingCanvas x:Name="Canvas"/>
+        </Panel>
+    </DockPanel>
+</Window>

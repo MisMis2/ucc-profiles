@@ -1,0 +1,28 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        x:Class="MisPaint.ColorSpaceStore"
+        Title="Магазин цветовых пространств"
+        Width="500" Height="400"
+        Background="#2D2D30"
+        CanResize="False">
+    <Grid Margin="15">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        
+        <StackPanel Orientation="Horizontal" Spacing="10" Margin="0,0,0,10">
+            <Button Name="OfficialTab" Content="Официальные" Width="120" Height="32" Background="#0078D4" Foreground="White"/>
+            <Button Name="CommunityTab" Content="Community" Width="120" Height="32" Background="#3E3E42" Foreground="White"/>
+        </StackPanel>
+        
+        <ListBox Grid.Row="1" Name="ProfileList" Background="#1E1E1E" Foreground="#CCCCCC" BorderBrush="#3F3F46"/>
+        
+        <StackPanel Grid.Row="2" Orientation="Horizontal" HorizontalAlignment="Center" Spacing="10" Margin="0,15,0,0">
+            <Button Name="ActionBtn" Content="Скачать" Width="100" Height="32" Background="#0078D4" Foreground="White"/>
+            <Button Name="UploadBtn" Content="Как загрузить свой" Width="140" Height="32" Background="#3E3E42" Foreground="White" IsVisible="False"/>
+            <Button Name="CloseBtn" Content="Закрыть" Width="100" Height="32" Background="#3E3E42" Foreground="White"/>
+        </StackPanel>
+    </Grid>
+</Window>

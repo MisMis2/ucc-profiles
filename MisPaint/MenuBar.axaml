@@ -1,0 +1,34 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MisPaint.MenuBar"
+             Height="30">
+    <UserControl.Styles>
+        <Style Selector="Button.menu-item">
+            <Setter Property="Background" Value="Transparent"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="12,6"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.15"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.menu-item:pointerover">
+            <Setter Property="Background" Value="#E0E0E0"/>
+        </Style>
+        <Style Selector="Button.menu-item:pressed">
+            <Setter Property="Background" Value="#D0D0D0"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Border Background="#F0F0F0" BorderBrush="#CCCCCC" BorderThickness="0,0,0,1">
+        <StackPanel Orientation="Horizontal" Margin="4,0">
+            <Button Classes="menu-item" Content="Файл" Click="OnFileClick"/>
+            <Button Classes="menu-item" Content="Правка" Click="OnEditClick"/>
+            <Button Classes="menu-item" Content="Вид" Click="OnViewClick"/>
+            <Button Classes="menu-item" Content="Инструменты" Click="OnToolsClick"/>
+        </StackPanel>
+    </Border>
+</UserControl>

@@ -1,0 +1,35 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="MisPaint.DropdownMenu">
+    <UserControl.Styles>
+        <Style Selector="Border.dropdown">
+            <Setter Property="Transitions">
+                <Transitions>
+                    <DoubleTransition Property="Opacity" Duration="0:0:0.2"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.menu-option">
+            <Setter Property="Background" Value="White"/>
+            <Setter Property="Foreground" Value="Black"/>
+            <Setter Property="BorderThickness" Value="0"/>
+            <Setter Property="Padding" Value="20,8"/>
+            <Setter Property="HorizontalAlignment" Value="Stretch"/>
+            <Setter Property="HorizontalContentAlignment" Value="Left"/>
+            <Setter Property="Cursor" Value="Hand"/>
+            <Setter Property="Transitions">
+                <Transitions>
+                    <BrushTransition Property="Background" Duration="0:0:0.1"/>
+                </Transitions>
+            </Setter>
+        </Style>
+        <Style Selector="Button.menu-option:pointerover">
+            <Setter Property="Background" Value="#E8F4FF"/>
+        </Style>
+    </UserControl.Styles>
+    
+    <Border Classes="dropdown" Background="White" BorderBrush="#CCCCCC" BorderThickness="1" 
+            BoxShadow="0 2 8 0 #40000000" MinWidth="150" CornerRadius="0,0,4,4">
+        <StackPanel x:Name="MenuItems"/>
+    </Border>
+</UserControl>

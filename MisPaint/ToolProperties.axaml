@@ -1,0 +1,148 @@
+<UserControl xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:local="clr-namespace:MisPaint"
+             xmlns:ic="using:FluentIcons.Avalonia.Fluent"
+             x:Class="MisPaint.ToolProperties">
+
+	<UserControl.Styles>
+		<Style Selector="Border.color-chip">
+			<Setter Property="Width" Value="22"/>
+			<Setter Property="Height" Value="22"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Margin" Value="1"/>
+			<Setter Property="Cursor" Value="Hand"/>
+			<Setter Property="BorderBrush" Value="#3F3F46"/>
+			<Setter Property="BorderThickness" Value="1"/>
+		</Style>
+
+		<Style Selector="Border.color-chip:pointerover">
+			<Setter Property="BorderThickness" Value="2"/>
+			<Setter Property="BorderBrush" Value="#0078D4"/>
+		</Style>
+
+		<Style Selector="Button.header-btn">
+			<Setter Property="Width" Value="24"/>
+			<Setter Property="Height" Value="24"/>
+			<Setter Property="Background" Value="Transparent"/>
+			<Setter Property="BorderThickness" Value="0"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="CornerRadius" Value="3"/>
+			<Setter Property="Cursor" Value="Hand"/>
+		</Style>
+
+		<Style Selector="Button.header-btn:pointerover">
+			<Setter Property="Background" Value="#3E3E42"/>
+		</Style>
+
+		<Style Selector="Button.header-btn:pressed">
+			<Setter Property="Background" Value="#505050"/>
+		</Style>
+
+		<Style Selector="Button.size-btn">
+			<Setter Property="Width" Value="22"/>
+			<Setter Property="Height" Value="22"/>
+			<Setter Property="Padding" Value="0"/>
+			<Setter Property="Background" Value="#3E3E42"/>
+			<Setter Property="BorderBrush" Value="#3F3F46"/>
+			<Setter Property="BorderThickness" Value="1"/>
+			<Setter Property="CornerRadius" Value="11"/>
+			<Setter Property="Cursor" Value="Hand"/>
+		</Style>
+
+		<Style Selector="Button.size-btn:pointerover">
+			<Setter Property="Background" Value="#505050"/>
+		</Style>
+
+		<Style Selector="ic|SymbolIcon">
+			<Setter Property="Foreground" Value="#CCCCCC"/>
+		</Style>
+
+		<Style Selector="TextBlock">
+			<Setter Property="Foreground" Value="#CCCCCC"/>
+		</Style>
+
+		<Style Selector="Slider /template/ Thumb">
+			<Setter Property="Background" Value="#0078D4"/>
+			<Setter Property="BorderBrush" Value="#005A9E"/>
+		</Style>
+
+		<Style Selector="ComboBox">
+			<Setter Property="Background" Value="#3E3E42"/>
+			<Setter Property="Foreground" Value="#CCCCCC"/>
+			<Setter Property="BorderBrush" Value="#3F3F46"/>
+		</Style>
+
+		<Style Selector="ComboBox:pointerover">
+			<Setter Property="Background" Value="#3E3E42"/>
+			<Setter Property="BorderBrush" Value="#0078D4"/>
+		</Style>
+
+		<Style Selector="Slider:pointerover /template/ Thumb">
+			<Setter Property="Background" Value="#1C97EA"/>
+		</Style>
+	</UserControl.Styles>
+
+	<Border Background="#2D2D30" BorderBrush="#3F3F46" BorderThickness="1" CornerRadius="4" Width="150">
+		<StackPanel>
+			<Border Background="#252526" BorderBrush="#3F3F46" BorderThickness="0,0,0,1" CornerRadius="4,4,0,0" Padding="6,4">
+				<Grid ColumnDefinitions="*,Auto,Auto" VerticalAlignment="Center">
+					<ComboBox x:Name="ToolCombo" Grid.Column="0" BorderThickness="1" CornerRadius="3" Padding="4,2" FontSize="10" Height="22" SelectedIndex="0" SelectionChanged="OnToolChanged">
+						<ComboBoxItem Content="Кисть" Tag="Brush"/>
+						<ComboBoxItem Content="Ластик" Tag="Eraser"/>
+						<ComboBoxItem Content="Заливка" Tag="Fill"/>
+					</ComboBox>
+
+					<Button x:Name="PinButton" Grid.Column="1" Classes="header-btn" ToolTip.Tip="Закрепить" Margin="2,0" Click="OnPinClick">
+						<ic:SymbolIcon x:Name="PinIcon" Symbol="Pin" FontSize="11"/>
+					</Button>
+
+					<Button Grid.Column="2" Classes="header-btn" ToolTip.Tip="Закрыть" Click="OnCloseClick">
+						<ic:SymbolIcon Symbol="Dismiss" FontSize="11"/>
+					</Button>
+				</Grid>
+			</Border>
+
+			<Border Padding="6">
+				<StackPanel Spacing="6">
+					<Border x:Name="CurrentColorBorder" Width="30" Height="30" CornerRadius="3" BorderBrush="#3F3F46" BorderThickness="2" Background="Black" Cursor="Hand" PointerPressed="OnCurrentColorClick"/>
+
+					<StackPanel Spacing="3" x:Name="ColorPanel">
+						<TextBlock Text="Цвета" FontSize="9" Foreground="#AAAAAA" FontWeight="SemiBold"/>
+						<WrapPanel>
+							<Border Classes="color-chip" Background="Black" Tag="#000000" PointerPressed="OnColorClick"/>
+							<Border Classes="color-chip" Background="White" Tag="#FFFFFF" PointerPressed="OnColorClick"/>
+							<Border Classes="color-chip" Background="#FF0000" Tag="#FF0000" PointerPressed="OnColorClick"/>
+							<Border Classes="color-chip" Background="#00FF00" Tag="#00FF00" PointerPressed="OnColorClick"/>
+							<Border Classes="color-chip" Background="#0000FF" Tag="#0000FF" PointerPressed="OnColorClick"/>
+							<Border Classes="color-chip" Background="#FFFF00" Tag="#FFFF00" PointerPressed="OnColorClick"/>
+						</WrapPanel>
+					</StackPanel>
+
+					<StackPanel Spacing="3" x:Name="SizePanel">
+						<Grid ColumnDefinitions="Auto,*,Auto">
+							<TextBlock Text="Размер" Grid.Column="0" FontSize="9" Foreground="#AAAAAA" FontWeight="SemiBold" VerticalAlignment="Center"/>
+							<TextBlock x:Name="SizeValueText" Grid.Column="2" Text="2px" FontSize="9" Foreground="#CCCCCC" VerticalAlignment="Center"/>
+						</Grid>
+						<Grid ColumnDefinitions="Auto,*,Auto">
+							<Button Grid.Column="0" Classes="size-btn" Click="OnDecreaseSizeClick">
+								<ic:SymbolIcon Symbol="Subtract" FontSize="10"/>
+							</Button>
+							<Slider x:Name="SizeSlider" Grid.Column="1" Margin="3,0" Minimum="1" Maximum="50" Value="2"/>
+							<Button Grid.Column="2" Classes="size-btn" Click="OnIncreaseSizeClick">
+								<ic:SymbolIcon Symbol="Add" FontSize="10"/>
+							</Button>
+						</Grid>
+					</StackPanel>
+
+					<StackPanel Spacing="3" x:Name="OpacityPanel">
+						<Grid ColumnDefinitions="Auto,*,Auto">
+							<TextBlock Text="Прозрачность" Grid.Column="0" FontSize="9" Foreground="#AAAAAA" FontWeight="SemiBold" VerticalAlignment="Center"/>
+							<TextBlock x:Name="OpacityValueText" Grid.Column="2" Text="100%" FontSize="9" Foreground="#CCCCCC" VerticalAlignment="Center"/>
+						</Grid>
+						<Slider x:Name="OpacitySlider" Minimum="0" Maximum="100" Value="100"/>
+					</StackPanel>
+				</StackPanel>
+			</Border>
+		</StackPanel>
+	</Border>
+</UserControl>
